@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+  		<meta charset="UTF-8">
+		<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='mobile/login.css') }}">
+  		<title>ChristmasLights - Edit Outlet {{outlet.id}}</title>
+	</head>
+	<body>
+		<div class="body"></div>
+		<div class="header">
+			<div>Christmas<span>Lights</span></div>
+			{% with messages = get_flashed_messages() %}
+			  {% if messages %}
+			    {% for message in messages %}
+			       <br><center>{{ message }}
+			    {% endfor %}
+			  {% endif %}
+			{% endwith %}
+		</div>
+		<br>
+		<div class="login">
+				<form name="login" action="" method="post">
+					<input type="text" value="Outlet {{outlet.id}}" readonly>
+					<input type="text" placeholder="Description" value="{{outlet.description}}" name="description"><br>
+					<input type="text" placeholder="Pin Number" value="{{outlet.pin}}" name="pin">
+					<input type="submit" value="Submit Changes">
+				</form>
+		</div>
+	</body>
+</html>

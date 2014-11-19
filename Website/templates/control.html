@@ -1,0 +1,80 @@
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='control.css') }}">
+		<title>ChristmasLights</title>
+	</head>
+	<body>
+		<div class="body"></div>
+		<div class="header">
+			<div>Christmas<span>Lights</span></div>
+			<div id="buttons">
+				<table>
+					<tr>
+						<td><a href="/changePassword" class="button"> Change Password</a></td>
+						<td><a href="/logout" class="button">Log out</a></td>
+					</tr>
+					<tr>
+					<td colspan="2" style="text-shadow: 1px 0 0 #000, 0 -1px 0 #000, 0 1px 0 #000, -1px 0 0 #000;	font-size:12px;
+	font-family:Arial;
+	font-weight:bold;
+	color:#ffffff;">
+					{% with messages = get_flashed_messages() %}
+					  {% if messages %}
+					    {% for message in messages %}
+					       <br><center>{{ message }}
+					    {% endfor %}
+					  {% endif %}
+					{% endwith %}
+					<td>
+					</tr>
+				</table>
+				</div>
+		</div>
+		<form name="selectMode" action="" method='post'>
+			<table align="center">
+			<tr>
+			<td>
+				<select name="mode" style="height:30px;width:200px;margin-top:7px">
+				{% for o in modes %}
+					{% if mode == o.id %}
+				    		<option name="{{ o.id }}" SELECTED>{{ o.name }}</option>
+					{% else %}
+						<option name="{{ o.id }}">{{ o.name }}</option>
+					{% endif %}
+				{% endfor %}
+				</select>
+			</td>
+			<td>
+				<input class="button" type="submit" value="Change Mode" style="height:30px;width:130px">
+			</td>
+			</tr>
+			</table>
+		</form>
+		{% if mode==1 %}
+		<div class="pinTable">		
+		<table name="GPIO">
+			<tr>
+				<th>Outlet</th>
+				<th>Pin</th>
+				<th>Description</th>
+				<th>Status</th>
+				<th>Edit</th>
+			</tr>
+		      	{% for o in outlets %}
+			<tr>
+			<td><div style="height:40px; overflow:hidden"> {{ o.id }} </div></td>
+			<td><div style="height:40px; overflow:hidden"> {{ o.pin }} </div></td>
+			<td><div style="height:40px; overflow:hidden"> {{ o.description }}</div></td>
+			{% if o.status == true %}
+			     <td><div style="height:40px; overflow:hidden"><a href="/{{o.id}}/Toggle"><input type="image" width="30px" src="{{ url_for('static', filename='images/on.png') }}"></a></div></td>
+			{% else %}
+			     <td><div style="height:40px; overflow:hidden"><a href="/{{o.id}}/Toggle"><input type="image" width="30px" src="{{ url_for('static', filename='images/off.png') }}"</a></div></td>
+			{% endif %}
+			<td><div style="height:40px; overflow:hidden"> <a href="/{{o.id}}/Edit"><image width="30px" src="{{ url_for('static', filename='images/edit.png') }}"></a></div></td>
+			</tr>
+			{% endfor %}		
+		</table>
+		</div>
+		{% endif %}
+	</body>
+</html>
