@@ -14,7 +14,7 @@ import time
 
 host = "localhost"  # Host the site on local machine
 dbusername = "root"  # MYSQL username
-dbpassword = "Tennis12"  # MYSQL password
+dbpassword = "password"  # MYSQL password
 dbname = "ChristmasLights"  # Database name
 
 """ Main
