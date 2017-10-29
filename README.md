@@ -1,5 +1,5 @@
-ChristmasLights
-----
+# ChristmasLights
+
 
 A Project to control Christmas Lights and sync them to music using [lightshowpi](https://bitbucket.org/togiles/lightshowpi/wiki/Home) and the Raspberry Pi.
 
@@ -7,7 +7,6 @@ There are 2 ways to control up to 8 outlets.
  1. Automated using crontab
  2. A Python/Flask website using MySQL
  
-----
 ## Automation
 
 To have the lights automatically run use the python scripts in the AutoLights directory
@@ -19,7 +18,6 @@ To have the lights automatically run use the python scripts in the AutoLights di
 Use cron to run the lights at certain times by calling the above scripts. The example below will sync lights to music at 5,6,7,8pm every day.
 > 0 17,18,19,20 * * * /ChristmasLights/AutoLights/SyncToChristmasMusic.py
 
-----
 ## Website Interface
 
 Instead of having the lights automatically turn on, you can have a webiste which controls the lights. There are 4 modes:
@@ -45,7 +43,7 @@ To run the controller:
 * Flask
 * Passlib
 
-##Other##
+## Other
 
 This was just for personal project. You'll probably have to modify my scripts and the lightshowpi configs to meet your own needs. 
 
